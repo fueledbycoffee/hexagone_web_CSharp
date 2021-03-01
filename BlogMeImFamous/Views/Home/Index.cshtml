@@ -1,0 +1,45 @@
+﻿@using BlogMeImFamous.Models
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('https://picsum.photos/1900/1200')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>I Like Trains.</h1>
+                    <span class="subheading">The Blog Of The Blogger who blogs.</span>
+                </div><
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            @foreach (var article in (ViewData["posts"] as IEnumerable<Article>))
+            {
+                <div class="post-preview">
+                    <a href="/Article/Details/@article.Id">
+                        <h2 class="post-title">
+                            @article.Titre
+                        </h2>
+                        <h3 class="post-subtitle">
+                            @(article.Contenu.Substring(0, Math.Min(article.Contenu.Length, 255)) + "...");
+                        </h3>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#">The Influencer</a>
+                        @(article.DatePublication.ToString("MMMM dd, yyyy") + ".")
+                    </p>
+                </div>
+                <hr>
+            }
+        </div>
+    </div>
+</div>

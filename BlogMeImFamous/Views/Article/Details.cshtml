@@ -1,0 +1,42 @@
+﻿@model BlogMeImFamous.Models.Article
+
+@{
+    ViewData["Title"] = Model.Titre;
+}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('https://picsum.photos/1900/1200')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1>@Model.Titre</h1>
+                    <span class="meta">
+                        Posted by
+                        <a href="#">The Influencer</a>
+                        @(Model.DatePublication.ToString("MMMM dd, yyyy") + ".")
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                @Model.Contenu
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+<div class="text-center">
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
